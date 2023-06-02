@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Reloj Digital Venezuela</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+
+		.clock {
+			display: inline-block;
+			padding: 20px;
+			background-color: #222;
+			color: #fff;
+			font-size: 4em;
+			font-weight: bold;
+			border-radius: 10px;
+			box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		}
+	</style>
+	<script>
+		function updateTime() {
+			var now = new Date();
+			var hours = now.getHours();
+			var minutes = now.getMinutes();
+			var seconds = now.getSeconds();
+			var ampm = hours >= 12 ? 'PM' : 'AM';
+
+			hours = hours % 12;
+			hours = hours ? hours : 12; // el número 12 es considerado como 0 en formato 12 horas
+			minutes = (minutes < 10 ? "0" : "") + minutes;
+			seconds = (seconds < 10 ? "0" : "") + seconds;
+
+			var timeString = hours + ":" + minutes + ":" + seconds + ' ' + ampm;
+			document.getElementById("clock").innerHTML = timeString;
+		}
+
+		setInterval(updateTime, 1000);
+	</script>
+</head>
+<body>
+	<div class="clock" id="clock"></div>
+</body>
+</html>
